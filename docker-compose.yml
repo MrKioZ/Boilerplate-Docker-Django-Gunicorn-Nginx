@@ -13,6 +13,12 @@ services:
       - database1_network
     depends_on:
       - database1
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST=database1
+      - POSTGRES_PORT=5432
 
   nginx:
     image: pagespeed/nginx-pagespeed:latest
@@ -35,6 +41,10 @@ services:
       - database1_network
     volumes:
       - database1_volume:/var/lib/postgresql/data2
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
 
 networks:
   nginx_network:
